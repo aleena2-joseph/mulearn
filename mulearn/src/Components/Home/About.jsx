@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
-
+import { Link } from "react-router-dom";
 const About = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -117,69 +117,72 @@ const About = forwardRef((props, ref) => {
                 </div>
 
                 <div className="pt-6">
-                  <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 transform hover:-translate-y-1 flex items-center gap-2">
-                    Learn More About Us
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </button>
+                  <Link to="/main">
+                    <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 transform hover:-translate-y-1 flex items-center gap-2">
+                      Learn More About Us
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
 
             {/* Design & Chat Section */}
             <div
-              className={`relative lg:w-1/2 h-[500px] transition-all duration-1000 transform ${
+              className={`relative w-full lg:w-1/2 h-[500px] sm:h-[600px] md:h-[550px] transition-all duration-1000 transform ${
                 isVisible
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 translate-x-12"
               }`}
             >
-              <div className="absolute top-16 left-10 w-36 h-36 bg-gradient-to-br from-purple-300 to-indigo-300 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-              <div className="absolute top-1/3 left-1/4 w-20 h-20 bg-purple-200 transform rotate-45 shadow-lg shadow-purple-300/40"></div>
-              <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-100 rounded-[60%] blur-xl opacity-50 "></div>
-              <div className="absolute top-10 right-10 flex gap-2">
-                <div className="w-4 h-4 bg-purple-400 rounded-full"></div>
-                <div className="w-3 h-3 bg-purple-300 rounded-full"></div>
-                <div className="w-5 h-5 bg-purple-500 rounded-full"></div>
+              {/* Decorative Elements */}
+              <div className="absolute top-16 left-6 sm:left-10 w-24 h-24 sm:w-36 sm:h-36 bg-gradient-to-br from-purple-300 to-indigo-300 rounded-full blur-3xl opacity-40 animate-pulse"></div>
+              <div className="absolute top-1/3 left-1/5 w-16 h-16 sm:w-20 sm:h-20 bg-purple-200 transform rotate-45 shadow-lg shadow-purple-300/40"></div>
+              <div className="absolute bottom-20 right-4 sm:right-10 w-32 h-32 sm:w-48 sm:h-48 bg-purple-100 rounded-[60%] blur-xl opacity-50 "></div>
+              <div className="absolute top-10 right-4 sm:right-10 flex gap-1 sm:gap-2">
+                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-purple-400 rounded-full"></div>
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-purple-300 rounded-full"></div>
+                <div className="w-4 h-4 sm:w-5 sm:h-5 bg-purple-500 rounded-full"></div>
               </div>
-              <div className="absolute bottom-8 left-6 grid grid-cols-4 gap-2">
+              <div className="absolute bottom-8 left-2 sm:left-6 grid grid-cols-4 gap-1 sm:gap-2">
                 {Array.from({ length: 16 }).map((_, i) => (
                   <div
                     key={i}
-                    className="w-2 h-2 bg-purple-200 rounded-full"
+                    className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-200 rounded-full"
                   ></div>
                 ))}
               </div>
-              <div className="absolute top-1/2 right-1/3 w-24 h-24 border-4 border-purple-200 rounded-full blur-sm opacity-40 animate-spin-slow"></div>
+              <div className="absolute top-1/2 right-1/4 w-20 h-20 sm:w-24 sm:h-24 border-4 border-purple-200 rounded-full blur-sm opacity-40 animate-spin-slow"></div>
 
               {/* Chat Info Boxes */}
-              <div className="absolute top-8 left-2 bg-white bg-opacity-90 border border-purple-200 shadow-lg rounded-xl p-4 max-w-xs text-sm backdrop-blur-md">
+              <div className="absolute top-4 left-1 sm:top-8 sm:left-2 bg-white bg-opacity-90 border border-purple-200 shadow-lg rounded-xl p-3 sm:p-4 max-w-[85%] sm:max-w-xs text-xs sm:text-sm backdrop-blur-md">
                 <div className="text-purple-700 font-semibold">μlearn:</div>
                 <p className="text-gray-700 mt-1">
                   Hey there! 👋 Ready to start your tech journey?
                 </p>
               </div>
 
-              <div className="absolute top-32 right-2 bg-purple-100 border border-purple-300 shadow-md rounded-xl p-4 mt-4 max-w-xs text-sm backdrop-blur-md">
+              <div className="absolute top-28 right-1 sm:top-32 sm:right-2 bg-purple-100 border border-purple-300 shadow-md rounded-xl p-3 sm:p-4 max-w-[85%] sm:max-w-xs text-xs sm:text-sm backdrop-blur-md">
                 <div className="text-purple-800 font-semibold">You:</div>
                 <p className="text-gray-800 mt-1">
                   Yes! But where do I start? So many skills to pick from 😅
                 </p>
               </div>
 
-              <div className="absolute bottom-36 left-4 bg-white bg-opacity-90 border border-purple-200 shadow-lg rounded-xl p-4 max-w-xs text-sm backdrop-blur-md">
+              <div className="absolute bottom-28 left-2 sm:bottom-36 sm:left-4 bg-white bg-opacity-90 border border-purple-200 shadow-lg rounded-xl p-3 sm:p-4 max-w-[85%] sm:max-w-xs text-xs sm:text-sm backdrop-blur-md">
                 <div className="text-purple-700 font-semibold">μlearn:</div>
                 <p className="text-gray-700 mt-1">
                   No worries! We’ve got curated tracks, mentors, and projects
@@ -187,7 +190,7 @@ const About = forwardRef((props, ref) => {
                 </p>
               </div>
 
-              <div className="absolute bottom-6 right-6 bg-purple-100 border border-purple-300 shadow-md rounded-xl p-4 max-w-xs text-sm backdrop-blur-md">
+              <div className="absolute bottom-4 right-2 sm:bottom-6 sm:right-6 bg-purple-100 border border-purple-300 shadow-md rounded-xl p-3 sm:p-4 max-w-[85%] sm:max-w-xs text-xs sm:text-sm backdrop-blur-md">
                 <div className="text-purple-800 font-semibold">You:</div>
                 <p className="text-gray-800 mt-1">
                   Wow! That sounds perfect. Can’t wait to get started 🔥

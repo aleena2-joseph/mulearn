@@ -2,18 +2,17 @@ import { useState, useEffect, forwardRef, useRef } from "react";
 import { Users, ChevronLeft, ChevronRight } from "lucide-react";
 import aibal from "../../assets/aibal jose.jpeg";
 import athul from "../../assets/athul.jpeg";
-import athira from "../../assets/athira.jpeg";
-import neeva from "../../assets/neeva.jpeg";
-import aleena from "../../assets/aleena.jpeg";
-import aibalmani from "../../assets/aibal mani.jpeg";
-import alen from "../../assets/alen.jpeg";
-import abin from "../../assets/abin.png";
+import athira from "../../assets/athira.jpg";
+import neeva from "../../assets/neeva.jpg";
+import aleena from "../../assets/aleena.png";
+import aibalmani from "../../assets/aibalmani.jpg";
+import alen from "../../assets/alen.png";
+import abin from "../../assets/abin.jpg";
 import geo from "../../assets/geo.png";
 const OurTeam = forwardRef((props, ref) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const scrollerInnerRef = useRef(null);
-  // Removing the unused scrollerRef variable
 
   useEffect(() => {
     setIsVisible(true);
@@ -74,11 +73,12 @@ const OurTeam = forwardRef((props, ref) => {
   const campusLead = {
     name: "Aibal Jose",
     role: "Campus Lead",
-    batch: "INT MCA",
+    dept: "INT MCA",
+    muid: "aibaljose@mulearn",
     image: aibal,
-    github: "https://github.com/arunkumar",
-    linkedin: "https://linkedin.com/in/arunkumar",
-    bio: "Leading MULearn initiatives at AJCE with a passion for technology and community building.",
+
+    linkedin: "https://www.linkedin.com/in/aibaljose/",
+    bio: "The Campus Lead of µLearn AJCE is an Integrated MCA student at Amal Jyothi College of Engineering. With a strong passion for front-end development, React, and IoT, they also serve as the founder of IMPACT, Webmaster for ACM AJCE, and an Open IoT Ambassador with ICFOSS.",
   };
 
   // Team Members (will rotate in carousel)
@@ -86,82 +86,140 @@ const OurTeam = forwardRef((props, ref) => {
     {
       name: "Athul Mathew",
       role: "Campus Co-Lead",
-      batch: "2022-26",
+      muid: "athulmathew@mulearn",
       image: athul,
-      github: "https://github.com/meeranair",
-      linkedin: "https://linkedin.com/in/meeranair",
+
+      linkedin: "https://www.linkedin.com/in/athul-mathew-b16202254/",
+    },
+    {
+      name: "Jibin Jacob",
+      role: "Operation Team Lead",
+      muid: "jibinjacob@mulearn",
+      image: "",
+
+      linkedin: "",
+    },
+    {
+      name: "Muzaid Musthafa",
+      role: "Operation Team",
+      muid: "muzaidmusthafa@mulearn",
+      image: "",
+
+      linkedin: "",
+    },
+    {
+      name: "Alen Kuriakose",
+      role: "Operation Team",
+      muid: "alenkuriakose@mulearn",
+      image: alen,
+
+      linkedin: "http://www.linkedin.com/in/alen-kuriakose-69060b260",
+    },
+    {
+      name: "Bala Susan Jacob",
+      role: "Operation Team",
+      muid: "balasusanjacob@mulearn",
+      image: "",
+
+      linkedin: "",
+    },
+
+    {
+      name: "Abin Thomas",
+      role: "Operation Team",
+      muid: "abinthomas-4@mulearn",
+      image: abin,
+
+      linkedin: "https://www.linkedin.com/in/abin-thomas-b33773265/",
+    },
+    {
+      name: "Kevin George",
+      role: "Media Team Lead",
+      muid: "kevingeorge@mulearn",
+      image: "",
+
+      linkedin: "",
+    },
+    {
+      name: "Neeva Sunish Mathew",
+      role: "Media Team",
+      muid: "neevasunishmathew@mulearn",
+      image: neeva,
+
+      linkedin: "https://www.linkedin.com/in/neevasunishmathew",
+    },
+    {
+      name: "Niyas",
+      role: "Media Team",
+      muid: "niyas-2@mulearn",
+      image: "",
+
+      linkedin: "",
+    },
+    {
+      name: "Deric Joseph",
+      role: "Media Team",
+      muid: "",
+      image: "",
+
+      linkedin: "",
+    },
+    {
+      name: "Pranav Siby",
+      role: "Tech Team Lead",
+      muid: "pranavsiby@mulearn",
+      image: "",
+
+      linkedin: "",
+    },
+    {
+      name: "Geo George",
+      role: "Tech Team",
+      muid: "geogeorge-1@mulearn",
+      image: geo,
+
+      linkedin: "https://www.linkedin.com/in/geo-george-883616276/",
+    },
+    {
+      name: "Sebin Saji",
+      role: "Tech Team",
+      muid: "Sebinsaji@mulearn",
+      image: "",
+
+      linkedin: "https://linkedin.com/in/vishnuprasad",
+    },
+    {
+      name: "Aibal Jacob Mani",
+      role: "Design Team Lead",
+      muid: "aibaljacobmani@mulearn",
+      image: aibalmani,
+
+      linkedin: "https://www.linkedin.com/in/aibal-jacob-mani-40a623286/",
     },
     {
       name: "Athira Biju",
-      role: "Web Developer",
-      batch: "2022-26",
+      role: "Design Team",
+      muid: "athirabiju@mulearn",
       image: athira,
-      github: "https://github.com/josephthomas",
-      linkedin: "https://linkedin.com/in/josephthomas",
+
+      linkedin: "https://www.linkedin.com/in/athira-biju-4a1b21300/",
     },
     {
       name: "Aleena Joseph",
       role: "Web Lead",
-      batch: "2023-27",
+      muid: "aleenajoseph-4@mulearn",
       image: aleena,
-      github: "https://github.com/anjalimenon",
-      linkedin: "https://linkedin.com/in/anjalimenon",
+
+      linkedin: "https://www.linkedin.com/in/aleena-joseph-1151442b9/",
     },
+
     {
-      name: "Neeva",
-      role: "Backend Developer",
-      batch: "2021-25",
-      image: neeva,
-      github: "https://github.com/rahuldev",
-      linkedin: "https://linkedin.com/in/rahuldev",
-    },
-    {
-      name: "Aibal Jacob Mani",
-      role: "Content Creator",
-      batch: "2022-26",
-      image: aibalmani,
-      github: "https://github.com/priyavarghese",
-      linkedin: "https://linkedin.com/in/priyavarghese",
-    },
-    {
-      name: "Alen Kuriakose",
-      role: "ML Engineer",
-      batch: "2021-25",
-      image: alen,
-      github: "https://github.com/alexphilip",
-      linkedin: "https://linkedin.com/in/alexphilip",
-    },
-    {
-      name: "Abin Thomas",
-      role: "Event Coordinator",
-      batch: "2023-27",
-      image: abin,
-      github: "https://github.com/sarajames",
-      linkedin: "https://linkedin.com/in/sarajames",
-    },
-    {
-      name: "Geo George",
-      role: "App Developer",
-      batch: "2022-26",
-      image: geo,
-      github: "https://github.com/vishnuprasad",
-      linkedin: "https://linkedin.com/in/vishnuprasad",
-    },
-    {
-      name: "Lakshmi Warrier",
-      role: "Community Manager",
-      batch: "2023-27",
-      image: "/api/placeholder/300/300",
-      github: "https://github.com/lakshmiwrrier",
-      linkedin: "https://linkedin.com/in/lakshmiwarrier",
-    },
-    {
-      name: "Karthik Menon",
-      role: "IoT Specialist",
-      batch: "2021-25",
-      image: "/api/placeholder/300/300",
-      github: "https://github.com/karthikmenon",
-      linkedin: "https://linkedin.com/in/karthikmenon",
+      name: "Alfred P Benjamin",
+      role: "Entrepreneurship Lead",
+      muid: "alfredpbenjamin@mulearn",
+      image: "",
+
+      linkedin: "",
     },
   ];
 
@@ -200,7 +258,7 @@ const OurTeam = forwardRef((props, ref) => {
           <div className="flex items-center justify-center mt-2">
             <Users className="w-6 h-6 text-purple-600 mr-2" />
             <p className="text-lg text-purple-600">
-              Meet the brilliant minds behind MULearn AJCE
+              Meet the Passionate Team Driving µLearn AJCE Forward
             </p>
           </div>
         </div>
@@ -227,30 +285,16 @@ const OurTeam = forwardRef((props, ref) => {
                     {campusLead.name}
                   </h3>
                   <div className="bg-purple-100 text-purple-800 inline-block px-3 py-1 rounded-full text-sm font-medium mb-3">
-                    Batch: {campusLead.batch}
+                    Dept: {campusLead.dept}
+                  </div>
+                  <div className="bg-purple-100 text-purple-800 inline-block px-3 py-1 rounded-full text-sm font-medium mb-3">
+                    μid: {campusLead.muid}
                   </div>
                   <p className="text-purple-700 leading-relaxed">
                     {campusLead.bio}
                   </p>
                 </div>
                 <div className="mt-6 flex space-x-4">
-                  <a
-                    href={campusLead.github}
-                    className="text-gray-500 hover:text-purple-800 transition-colors flex items-center"
-                  >
-                    <svg
-                      className="w-5 h-5 mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    GitHub
-                  </a>
                   <a
                     href={campusLead.linkedin}
                     className="text-gray-500 hover:text-purple-800 transition-colors flex items-center"
@@ -291,7 +335,6 @@ const OurTeam = forwardRef((props, ref) => {
           </div>
         </div>
 
-        {/* Team Members Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {getVisibleMembers().map((member, idx) => (
             <div
@@ -310,34 +353,21 @@ const OurTeam = forwardRef((props, ref) => {
                 <h3 className="font-semibold text-lg text-purple-800">
                   {member.name}
                 </h3>
-                <div className="flex items-center justify-between mt-1">
-                  <p className="text-purple-600 text-sm">{member.role}</p>
-                  <p className="text-purple-500 text-xs bg-purple-50 px-2 py-1 rounded-full">
-                    {member.batch}
-                  </p>
-                </div>
-                <div className="mt-3 flex space-x-3">
-                  <a
-                    href={member.github}
-                    className="text-gray-500 hover:text-purple-800 transition-colors"
-                    aria-label={`${member.name}'s GitHub`}
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </a>
+
+                {/* Role */}
+                <p className="text-purple-600 text-sm mt-1">{member.role}</p>
+
+                {/* Full-width line with MUID and LinkedIn */}
+                <div className="flex justify-between items-center mt-3 border-t border-purple-100 pt-2">
+                  <span className="text-purple-500 text-xs bg-purple-50 px-2 py-1 rounded-full">
+                    {member.muid}
+                  </span>
                   <a
                     href={member.linkedin}
                     className="text-gray-500 hover:text-purple-800 transition-colors"
                     aria-label={`${member.name}'s LinkedIn`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <svg
                       className="w-5 h-5"

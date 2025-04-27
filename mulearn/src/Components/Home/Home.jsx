@@ -5,6 +5,7 @@ import About from "./About";
 import Leaderboard from "./Leaderboard";
 import Highlights from "./Highlights";
 import OurTeam from "./OurTeam";
+import Footer from "./Footer";
 const Home = () => {
   const aboutRef = useRef(null);
   const HighlightsRef = useRef(null);
@@ -28,6 +29,7 @@ const Home = () => {
       <Leaderboard />
       <Highlights ref={HighlightsRef} />
       <OurTeam ref={OurTeamRef} />
+      <Footer />
     </div>
   );
 };

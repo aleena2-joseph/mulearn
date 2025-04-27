@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 export default function Navbar({ onAboutClick, onHighlightsClick }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -147,7 +146,7 @@ export default function Navbar({ onAboutClick, onHighlightsClick }) {
               {item.label}
             </button>
           ))}
-          <div className="pt-2 space-y-2">
+          {/* <div className="pt-2 space-y-2">
             <Link to="/login">
               <button className="w-full text-purple-200 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 hover:bg-purple-800 text-left">
                 Log In
@@ -158,7 +157,7 @@ export default function Navbar({ onAboutClick, onHighlightsClick }) {
                 Sign Up
               </button>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>
