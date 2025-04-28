@@ -383,10 +383,10 @@ export default function Hero() {
 
               <div className="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start">
                 <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1">
-                  Get Started
+                  <a href="https://app.mulearn.org/register">Get Started</a>
                 </button>
                 <button className="bg-transparent border-2 border-purple-500 text-purple-200 font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:bg-purple-500/10 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1">
-                  Learn More
+                  <a href="https://mulearn.org/"> Learn More</a>
                 </button>
               </div>
 

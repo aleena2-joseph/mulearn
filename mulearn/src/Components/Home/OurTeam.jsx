@@ -9,6 +9,15 @@ import aibalmani from "../../assets/aibalmani.jpg";
 import alen from "../../assets/alen.png";
 import abin from "../../assets/abin.jpg";
 import geo from "../../assets/geo.png";
+import deric from "../../assets/deric.png";
+import kevin from "../../assets/kevin.jpeg";
+import niyas from "../../assets/niyas.png";
+import sebin from "../../assets/sebin.jpeg";
+import pranav from "../../assets/pranav.png";
+import alfred from "../../assets/alfred.jpeg";
+import bala from "../../assets/bala.png";
+import muzaid from "../../assets/muzaid.png";
+import jibin from "../../assets/jibin.png";
 const OurTeam = forwardRef((props, ref) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -95,7 +104,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Jibin Jacob",
       role: "Operation Team Lead",
       muid: "jibinjacob@mulearn",
-      image: "",
+      image: jibin,
 
       linkedin: "",
     },
@@ -103,7 +112,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Muzaid Musthafa",
       role: "Operation Team",
       muid: "muzaidmusthafa@mulearn",
-      image: "",
+      image: muzaid,
 
       linkedin: "",
     },
@@ -119,7 +128,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Bala Susan Jacob",
       role: "Operation Team",
       muid: "balasusanjacob@mulearn",
-      image: "",
+      image: bala,
 
       linkedin: "",
     },
@@ -136,7 +145,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Kevin George",
       role: "Media Team Lead",
       muid: "kevingeorge@mulearn",
-      image: "",
+      image: kevin,
 
       linkedin: "",
     },
@@ -152,7 +161,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Niyas",
       role: "Media Team",
       muid: "niyas-2@mulearn",
-      image: "",
+      image: niyas,
 
       linkedin: "",
     },
@@ -160,7 +169,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Deric Joseph",
       role: "Media Team",
       muid: "",
-      image: "",
+      image: deric,
 
       linkedin: "",
     },
@@ -168,7 +177,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Pranav Siby",
       role: "Tech Team Lead",
       muid: "pranavsiby@mulearn",
-      image: "",
+      image: pranav,
 
       linkedin: "",
     },
@@ -184,7 +193,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Sebin Saji",
       role: "Tech Team",
       muid: "Sebinsaji@mulearn",
-      image: "",
+      image: sebin,
 
       linkedin: "https://linkedin.com/in/vishnuprasad",
     },
@@ -217,7 +226,7 @@ const OurTeam = forwardRef((props, ref) => {
       name: "Alfred P Benjamin",
       role: "Entrepreneurship Lead",
       muid: "alfredpbenjamin@mulearn",
-      image: "",
+      image: alfred,
 
       linkedin: "",
     },

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import JoinMuLearn from "./JoinMuLearn";
 const About = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -117,7 +118,7 @@ const About = forwardRef((props, ref) => {
                 </div>
 
                 <div className="pt-6">
-                  <Link to="/main">
+                  <Link to="https://mulearn.org/">
                     <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 transform hover:-translate-y-1 flex items-center gap-2">
                       Learn More About Us
                       <svg
@@ -200,6 +201,7 @@ const About = forwardRef((props, ref) => {
           </div>
         </div>
       </section>
+      <JoinMuLearn />
     </div>
   );
 });

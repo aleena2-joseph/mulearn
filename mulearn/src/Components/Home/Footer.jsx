@@ -228,20 +228,6 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-
-            {/* Campus Ambassadors */}
-            <div className="backdrop-blur-sm bg-purple-800/20 rounded-lg p-4 border border-purple-500/20">
-              <div className="flex items-start">
-                <RiUserHeartLine className="text-xl text-purple-400 mr-3 mt-1" />
-                <div>
-                  <h4 className="font-medium text-white">Campus Ambassadors</h4>
-                  <p className="text-lavender-200">
-                    Reach out to your campus ambassadors for updates and events
-                    happening in μLearn AJCE.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
