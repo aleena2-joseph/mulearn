@@ -1,6 +1,7 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import JoinMuLearn from "./JoinMuLearn";
+
 const About = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(false);
 

@@ -18,6 +18,8 @@ import alfred from "../../assets/alfred.jpeg";
 import bala from "../../assets/bala.png";
 import muzaid from "../../assets/muzaid.png";
 import jibin from "../../assets/jibin.png";
+import amal from "../../assets/amal.jpg";
+import navya from "../../assets/navya.jpg";
 const OurTeam = forwardRef((props, ref) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -90,7 +92,23 @@ const OurTeam = forwardRef((props, ref) => {
     bio: "The Campus Lead of µLearn AJCE is an Integrated MCA student at Amal Jyothi College of Engineering. With a strong passion for front-end development, React, and IoT, they also serve as the founder of IMPACT, Webmaster for ACM AJCE, and an Open IoT Ambassador with ICFOSS.",
   };
 
-  // Team Members (will rotate in carousel)
+  const facultyList = [
+    {
+      name: "Amal K Jose",
+      designation: "Assistant Professor",
+      description:
+        "Amal K Jose is an Assistant Professor in the Department of Computer Applications at Amal Jyothi College of Engineering, specializing in web development, cloud management, and machine learning.",
+      image: amal,
+    },
+    {
+      name: "Navyamol K T",
+      designation: "Assistant Professor",
+      description:
+        "Navyamol K T is an Assistant Professor in the Department of Computer Applications at Amal Jyothi College of Engineering, specializing in programming, cloud platforms, and data analytics. ",
+      image: navya,
+    },
+  ];
+
   const teamMembers = [
     {
       name: "Athul Mathew",
@@ -147,7 +165,7 @@ const OurTeam = forwardRef((props, ref) => {
       muid: "kevingeorge@mulearn",
       image: kevin,
 
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/kwingeorge",
     },
     {
       name: "Neeva Sunish Mathew",
@@ -168,10 +186,10 @@ const OurTeam = forwardRef((props, ref) => {
     {
       name: "Deric Joseph",
       role: "Media Team",
-      muid: "",
+      muid: "dericjoseph@mulearn",
       image: deric,
 
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/deric-joseph-3a0260279/",
     },
     {
       name: "Pranav Siby",
@@ -228,7 +246,8 @@ const OurTeam = forwardRef((props, ref) => {
       muid: "alfredpbenjamin@mulearn",
       image: alfred,
 
-      linkedin: "",
+      linkedin:
+        "https://www.linkedin.com/in/alfred-p-benjamin-675066246/?originalSubdomain=in",
     },
   ];
 
@@ -271,6 +290,66 @@ const OurTeam = forwardRef((props, ref) => {
             </p>
           </div>
         </div>
+        <section className="pb-30">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
+            Our Faculty
+          </h2>
+          <div className="max-w-6xl mx-auto space-y-16">
+            {facultyList.map((faculty, index) => (
+              <div
+                key={index}
+                className={`flex flex-col md:flex-row ${
+                  index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                } items-center gap-12`}
+              >
+                {/* Image Section with Design */}
+                <div className="relative flex-shrink-0">
+                  {/* Background Decorative Circle */}
+                  <div className="absolute -inset-4 bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 rounded-full opacity-60"></div>
+
+                  {/* Main Image Container */}
+                  <div className="relative">
+                    <img
+                      src={faculty.image}
+                      alt={faculty.name}
+                      className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg relative z-10"
+                    />
+
+                    {/* Bottom Design Element */}
+                    <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-32 h-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full opacity-20 blur-sm"></div>
+                  </div>
+                </div>
+
+                {/* Description Section */}
+                {/* Description Section */}
+                <div
+                  className={`flex-1 flex flex-col justify-center text-center ${
+                    index % 2 !== 0 ? "md:text-right" : "md:text-left"
+                  }`}
+                >
+                  <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                    {faculty.name}
+                  </h3>
+                  <p className="text-xl text-indigo-600 font-semibold mb-1">
+                    {faculty.designation}
+                  </p>
+                  <div
+                    className={`w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mb-3 ${
+                      index % 2 !== 0 ? "md:ml-auto" : ""
+                    } mx-auto md:mx-0`}
+                  ></div>
+                  <p
+                    className={`text-gray-700 text-base leading-relaxed max-w-xl ${
+                      index % 2 !== 0 ? "text-right ml-auto" : "text-left"
+                    }`}
+                  >
+                    {faculty.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Campus Lead - Fixed at Top */}
         <div className="mb-16">
