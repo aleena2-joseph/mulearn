@@ -1,26 +1,27 @@
 import { useState, useEffect } from "react";
 
-export default function Navbar({ onAboutClick, onHighlightsClick }) {
+export default function Navbar({
+  onAboutClick,
+  onHighlightsClick,
+  onHeroClick,
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("home");
 
   const handleItemClick = (id) => {
     setActiveItem(id);
-    if (id === "about" && onAboutClick) {
+    if (id === "home" && onHeroClick) {
+      onHeroClick();
+    } else if (id === "about" && onAboutClick) {
       onAboutClick();
     } else if (id === "highlights" && onHighlightsClick) {
       onHighlightsClick();
     } else if (id === "team") {
-      // Handle team section navigation
       const section = document.getElementById("ourTeam-section");
       if (section) section.scrollIntoView({ behavior: "smooth" });
     } else if (id === "contact") {
-      // Handle contact section navigation to footer
       const section = document.getElementById("footer");
-      if (section) section.scrollIntoView({ behavior: "smooth" });
-    } else {
-      const section = document.getElementById(id);
       if (section) section.scrollIntoView({ behavior: "smooth" });
     }
   };

@@ -35,7 +35,7 @@ const Home = () => {
       />
       <Hero ref={heroRef} />
       <About ref={aboutRef} />
-      <Leaderboard ref={LeaderboardRef} />
+      {/* <Leaderboard ref={LeaderboardRef} /> */}
       <Highlights ref={HighlightsRef} />
       <OurTeam ref={OurTeamRef} />
       <Footer />
