@@ -143,7 +143,7 @@ const Footer = () => {
                 <RiPhoneLine className="text-lg text-purple-400 mr-3 mt-1" />
                 <div>
                   <h4 className="font-medium text-white">Call Us</h4>
-                  <p className="text-lavender-200 text-sm">+91 98765 43210</p>
+                  <p className="text-lavender-200 text-sm">+91 98469 57010</p>
                 </div>
               </div>
             </div>
