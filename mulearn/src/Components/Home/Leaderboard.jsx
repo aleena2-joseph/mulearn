@@ -251,14 +251,18 @@ const Leaderboard = () => {
         {/* Top 3 Podium */}
         {topThree.length > 0 && (
           <div className="mb-12 mt-[10%]">
-            <div className="flex justify-center items-end space-x-6">
+            <div className="flex flex-col sm:flex-row justify-center items-center sm:items-end space-y-4 sm:space-y-0 sm:space-x-2 md:space-x-4 lg:space-x-6">
               {topThree.map((member, index) => {
                 const displayRank = index + 1; // 1, 2, 3 based on array position
-                const heights = "h-48"; // equal height
+                const heights = "h-32 sm:h-40 md:h-48"; // responsive height
                 const medals = {
-                  1: <Trophy className="w-8 h-8 text-yellow-900" />,
-                  2: <FaMedal className="w-8 h-8 text-gray-800" />,
-                  3: <Award className="w-8 h-8 text-amber-900" />,
+                  1: (
+                    <Trophy className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-900" />
+                  ),
+                  2: (
+                    <FaMedal className="w-6 h-6 sm:w-8 sm:h-8 text-gray-800" />
+                  ),
+                  3: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-amber-900" />,
                 };
 
                 const bgColors = {
@@ -282,18 +286,20 @@ const Leaderboard = () => {
                 return (
                   <div
                     key={member.muid || index}
-                    className={`flex flex-col items-center justify-end ${heights} relative`}
+                    className={`flex flex-col items-center justify-end ${heights} relative w-full max-w-[200px] sm:max-w-[180px] md:max-w-[200px] lg:max-w-[220px]`}
                   >
                     {/* Rank Number Badge - Top Right Corner */}
                     <div
-                      className={`absolute -top-2 -right-2 z-20 w-8 h-8 rounded-full ${rankBadgeColors[displayRank]} flex items-center justify-center shadow-lg border-2 border-white`}
+                      className={`absolute -top-2 -right-2 z-20 w-6 h-6 sm:w-8 sm:h-8 rounded-full ${rankBadgeColors[displayRank]} flex items-center justify-center shadow-lg border-2 border-white`}
                     >
-                      <span className="font-bold text-lg">{displayRank}</span>
+                      <span className="font-bold text-sm sm:text-lg">
+                        {displayRank}
+                      </span>
                     </div>
 
                     {/* Profile Image - Circular and positioned above the card */}
-                    <div className="absolute -top-8 z-10">
-                      <div className="w-16 h-16 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white">
+                    <div className="absolute -top-6 sm:-top-8 z-10">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-4 border-white shadow-lg overflow-hidden bg-white">
                         {member.profileImage ? (
                           <img
                             src={member.profileImage}
@@ -310,27 +316,29 @@ const Leaderboard = () => {
                             member.profileImage ? "hidden" : "flex"
                           }`}
                         >
-                          <User className="w-8 h-8 text-gray-400" />
+                          <User className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
                         </div>
                       </div>
                     </div>
 
                     <div
-                      className={`${bgColors[displayRank]} w-52 rounded-xl p-4 shadow-lg text-center flex flex-col items-center pt-6`}
+                      className={`${bgColors[displayRank]} w-full rounded-xl p-3 sm:p-4 shadow-lg text-center flex flex-col items-center pt-4 sm:pt-6`}
                     >
                       <div className="mb-2">{medals[displayRank]}</div>
 
                       {/* Highlighted Name as a bar/button */}
-                      <div className="bg-white px-4 py-1 rounded-full font-bold text-sm shadow-md mb-2 text-black">
+                      <div className="bg-white px-2 sm:px-4 py-1 rounded-full font-bold text-xs sm:text-sm shadow-md mb-2 text-black truncate max-w-full">
                         {member.name}
                       </div>
 
-                      <p className={`text-xs mb-2 ${textColors[displayRank]}`}>
+                      <p
+                        className={`text-xs mb-2 ${textColors[displayRank]} truncate max-w-full`}
+                      >
                         {member.muid || "No MUID"}
                       </p>
 
                       {/* Plain karma display (no highlight) */}
-                      <p className="text-sm font-semibold text-white">
+                      <p className="text-xs sm:text-sm font-semibold text-white">
                         {member.karma} Karma
                       </p>
                     </div>
