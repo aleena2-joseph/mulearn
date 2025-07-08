@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, forwardRef } from "react";
+import { FaDiscord } from "react-icons/fa6";
 
 const Hero = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(true); // Changed to true by default
@@ -342,6 +343,19 @@ const Hero = forwardRef((props, ref) => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="absolute bottom-6 right-6 text-indigo-600 text-center">
+              <a
+                href="https://discord.com/channels/1386737987857158338/1386737987857158341"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center hover:opacity-90"
+              >
+                <FaDiscord size={48} />
+                <span className="text-sm mt-1 font-medium">
+                  Join Discord Channel
+                </span>
+              </a>
             </div>
           </div>
         </div>
