@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function Navbar({
   onAboutClick,
+  onLeaderboardClick,
   onHighlightsClick,
   onHeroClick,
 }) {
@@ -15,6 +16,14 @@ export default function Navbar({
       onHeroClick();
     } else if (id === "about" && onAboutClick) {
       onAboutClick();
+    } else if (id === "leaderboard") {
+      // Try the callback first, then fall back to scroll behavior
+      if (onLeaderboardClick) {
+        onLeaderboardClick();
+      } else {
+        const section = document.getElementById("leaderboard-section");
+        if (section) section.scrollIntoView({ behavior: "smooth" });
+      }
     } else if (id === "highlights" && onHighlightsClick) {
       onHighlightsClick();
     } else if (id === "team") {

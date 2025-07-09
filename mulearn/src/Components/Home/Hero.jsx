@@ -9,7 +9,7 @@ const Hero = forwardRef((props, ref) => {
   const meshRef = useRef(null);
 
   // Combine refs - use the forwarded ref or create internal one
-  const sectionRef = ref || useRef(null);
+  const sectionRef = ref;
 
   useEffect(() => {
     const handleScroll = () => {

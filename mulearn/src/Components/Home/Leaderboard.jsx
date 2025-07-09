@@ -13,7 +13,7 @@ const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [setIsVisible] = useState(false);
 
   // Accessing environment variables
   const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
@@ -195,19 +195,6 @@ const Leaderboard = () => {
             <span className="text-purple-800 font-bold text-sm">{rank}</span>
           </div>
         );
-    }
-  };
-
-  const getRankBadgeColor = (rank) => {
-    switch (rank) {
-      case 1:
-        return "bg-gradient-to-r from-yellow-400 to-yellow-600 text-white";
-      case 2:
-        return "bg-gradient-to-r from-gray-300 to-gray-500 text-white";
-      case 3:
-        return "bg-gradient-to-r from-amber-500 to-amber-700 text-white";
-      default:
-        return "bg-gradient-to-r from-purple-500 to-purple-700 text-white";
     }
   };
 
