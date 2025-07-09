@@ -29,15 +29,51 @@ export default function Navbar({
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      const sections = [
+        { id: "home", el: document.getElementById("hero-section") },
+        { id: "about", el: document.getElementById("about-section") },
+        {
+          id: "leaderboard",
+          el: document.getElementById("leaderboard-section"),
+        },
+        { id: "highlights", el: document.getElementById("highlights-section") },
+        { id: "team", el: document.getElementById("ourTeam-section") },
+        { id: "contact", el: document.getElementById("footer") },
+      ];
+
+      let currentSection = "home";
+
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        if (!section.el) continue;
+
+        const rect = section.el.getBoundingClientRect();
+
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= 50) {
+          currentSection = section.id;
+        }
+
+        if (
+          window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 100
+        ) {
+          currentSection = "contact";
+        }
+      }
+
+      setActiveItem(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
+    { id: "leaderboard", label: "Leaderboard" },
     { id: "highlights", label: "Highlights" },
     { id: "team", label: "Our Team" },
     { id: "contact", label: "Contact" },
@@ -85,22 +121,6 @@ export default function Navbar({
             ))}
           </div>
 
-          {/* Auth Buttons - Desktop
-          <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login">
-              <button className="text-purple-200 hover:text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-purple-800/30">
-                Log In
-              </button>
-            </Link>
-            <Link to="/signup">
-              <button className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 group">
-                <span className="relative z-10">Sign Up</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-              </button>
-            </Link>
-          </div> */}
-
-          {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -153,18 +173,6 @@ export default function Navbar({
               {item.label}
             </button>
           ))}
-          {/* <div className="pt-2 space-y-2">
-            <Link to="/login">
-              <button className="w-full text-purple-200 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 hover:bg-purple-800 text-left">
-                Log In
-              </button>
-            </Link>
-            <Link to="/signup">
-              <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-3 rounded-lg transition-all duration-300 hover:from-indigo-600 hover:to-purple-600 text-left">
-                Sign Up
-              </button>
-            </Link>
-          </div> */}
         </div>
       </div>
     </nav>

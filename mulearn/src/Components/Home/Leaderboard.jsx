@@ -13,6 +13,7 @@ const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Accessing environment variables
   const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
@@ -22,6 +23,26 @@ const Leaderboard = () => {
 
   useEffect(() => {
     fetchLeaderboardData();
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const footerElement = document.getElementById("footer");
+      if (!footerElement) return;
+
+      const rect = footerElement.getBoundingClientRect();
+      const windowHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+
+      if (rect.top <= windowHeight * 0.8) {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    setTimeout(() => onScroll(), 100);
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const fetchLeaderboardData = async () => {
@@ -222,204 +243,212 @@ const Leaderboard = () => {
     .slice(0, 3);
 
   return (
-    <div className="bg-gradient-to-br from-purple-50 to-indigo-100 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <Target className="w-10 h-10 text-purple-600 mr-3" />
-            <h2 className="text-4xl font-bold text-purple-800">
-              µLearn AJCE Leaderboard
-            </h2>
-          </div>
-          <p className="text-lg text-purple-600 max-w-2xl mx-auto">
-            Celebrating our top performers and their amazing contributions to
-            the µLearn community
-          </p>
-        </div>
-
-        {/* Error Display */}
-        {error && (
-          <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <div className="flex items-center">
-              <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
-              <p className="text-red-800">{error}</p>
+    <section id="leaderboard-section">
+      <div className="bg-gradient-to-br from-purple-50 to-indigo-100 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center mb-4">
+              <Target className="w-10 h-10 text-purple-600 mr-3" />
+              <h2 className="text-4xl font-bold text-purple-800">
+                µLearn AJCE Leaderboard
+              </h2>
             </div>
+            <p className="text-lg text-purple-600 max-w-2xl mx-auto">
+              Celebrating our top performers and their amazing contributions to
+              the µLearn community
+            </p>
           </div>
-        )}
 
-        {/* Top 3 Podium */}
-        {topThree.length > 0 && (
-          <div className="mb-12 mt-[10%]">
-            <div className="flex flex-col sm:flex-row justify-center items-center sm:items-end space-y-4 sm:space-y-0 sm:space-x-2 md:space-x-4 lg:space-x-6">
-              {topThree.map((member, index) => {
-                const displayRank = index + 1; // 1, 2, 3 based on array position
-                const heights = "h-32 sm:h-40 md:h-48"; // responsive height
-                const medals = {
-                  1: (
-                    <Trophy className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-900" />
-                  ),
-                  2: (
-                    <FaMedal className="w-6 h-6 sm:w-8 sm:h-8 text-gray-800" />
-                  ),
-                  3: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-amber-900" />,
-                };
+          {/* Error Display */}
+          {error && (
+            <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <div className="flex items-center">
+                <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
+                <p className="text-red-800">{error}</p>
+              </div>
+            </div>
+          )}
 
-                const bgColors = {
-                  1: "bg-yellow-400",
-                  2: "bg-gray-300",
-                  3: "bg-amber-500",
-                };
+          {/* Top 3 Podium */}
+          {topThree.length > 0 && (
+            <div className="mb-12 mt-[10%]">
+              <div className="flex flex-col sm:flex-row justify-center items-center sm:items-end space-y-4 sm:space-y-0 sm:space-x-2 md:space-x-4 lg:space-x-6">
+                {topThree.map((member, index) => {
+                  const displayRank = index + 1; // 1, 2, 3 based on array position
+                  const heights = "h-32 sm:h-40 md:h-48"; // responsive height
+                  const medals = {
+                    1: (
+                      <Trophy className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-900" />
+                    ),
+                    2: (
+                      <FaMedal className="w-6 h-6 sm:w-8 sm:h-8 text-gray-800" />
+                    ),
+                    3: (
+                      <Award className="w-6 h-6 sm:w-8 sm:h-8 text-amber-900" />
+                    ),
+                  };
 
-                const textColors = {
-                  1: "text-yellow-900",
-                  2: "text-gray-800",
-                  3: "text-amber-900",
-                };
+                  const bgColors = {
+                    1: "bg-yellow-400",
+                    2: "bg-gray-300",
+                    3: "bg-amber-500",
+                  };
 
-                const rankBadgeColors = {
-                  1: "bg-yellow-600 text-white",
-                  2: "bg-gray-600 text-white",
-                  3: "bg-amber-600 text-white",
-                };
+                  const textColors = {
+                    1: "text-yellow-900",
+                    2: "text-gray-800",
+                    3: "text-amber-900",
+                  };
 
-                return (
-                  <div
-                    key={member.muid || index}
-                    className={`flex flex-col items-center justify-end ${heights} relative w-full max-w-[200px] sm:max-w-[180px] md:max-w-[200px] lg:max-w-[220px]`}
-                  >
-                    {/* Rank Number Badge - Top Right Corner */}
+                  const rankBadgeColors = {
+                    1: "bg-yellow-600 text-white",
+                    2: "bg-gray-600 text-white",
+                    3: "bg-amber-600 text-white",
+                  };
+
+                  return (
                     <div
-                      className={`absolute -top-2 -right-2 z-20 w-6 h-6 sm:w-8 sm:h-8 rounded-full ${rankBadgeColors[displayRank]} flex items-center justify-center shadow-lg border-2 border-white`}
+                      key={member.muid || index}
+                      className={`flex flex-col items-center justify-end ${heights} relative w-full max-w-[200px] sm:max-w-[180px] md:max-w-[200px] lg:max-w-[220px]`}
                     >
-                      <span className="font-bold text-sm sm:text-lg">
-                        {displayRank}
-                      </span>
-                    </div>
+                      {/* Rank Number Badge - Top Right Corner */}
+                      <div
+                        className={`absolute -top-2 -right-2 z-20 w-6 h-6 sm:w-8 sm:h-8 rounded-full ${rankBadgeColors[displayRank]} flex items-center justify-center shadow-lg border-2 border-white`}
+                      >
+                        <span className="font-bold text-sm sm:text-lg">
+                          {displayRank}
+                        </span>
+                      </div>
 
-                    {/* Profile Image - Circular and positioned above the card */}
-                    <div className="absolute -top-6 sm:-top-8 z-10">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-4 border-white shadow-lg overflow-hidden bg-white">
-                        {member.profileImage ? (
-                          <img
-                            src={member.profileImage}
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              e.target.style.display = "none";
-                              e.target.nextSibling.style.display = "flex";
-                            }}
-                          />
-                        ) : null}
-                        <div
-                          className={`w-full h-full flex items-center justify-center ${
-                            member.profileImage ? "hidden" : "flex"
-                          }`}
-                        >
-                          <User className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
+                      {/* Profile Image - Circular and positioned above the card */}
+                      <div className="absolute -top-6 sm:-top-8 z-10">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-4 border-white shadow-lg overflow-hidden bg-white">
+                          {member.profileImage ? (
+                            <img
+                              src={member.profileImage}
+                              alt={member.name}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                e.target.style.display = "none";
+                                e.target.nextSibling.style.display = "flex";
+                              }}
+                            />
+                          ) : null}
+                          <div
+                            className={`w-full h-full flex items-center justify-center ${
+                              member.profileImage ? "hidden" : "flex"
+                            }`}
+                          >
+                            <User className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div
-                      className={`${bgColors[displayRank]} w-full rounded-xl p-3 sm:p-4 shadow-lg text-center flex flex-col items-center pt-4 sm:pt-6`}
-                    >
-                      <div className="mb-2">{medals[displayRank]}</div>
-
-                      {/* Highlighted Name as a bar/button */}
-                      <div className="bg-white px-2 sm:px-4 py-1 rounded-full font-bold text-xs sm:text-sm shadow-md mb-2 text-black truncate max-w-full">
-                        {member.name}
-                      </div>
-
-                      <p
-                        className={`text-xs mb-2 ${textColors[displayRank]} truncate max-w-full`}
+                      <div
+                        className={`${bgColors[displayRank]} w-full rounded-xl p-3 sm:p-4 shadow-lg text-center flex flex-col items-center pt-4 sm:pt-6`}
                       >
-                        {member.muid || "No MUID"}
-                      </p>
+                        <div className="mb-2">{medals[displayRank]}</div>
 
-                      {/* Plain karma display (no highlight) */}
-                      <p className="text-xs sm:text-sm font-semibold text-white">
-                        {member.karma} Karma
-                      </p>
+                        {/* Highlighted Name as a bar/button */}
+                        <div className="bg-white px-2 sm:px-4 py-1 rounded-full font-bold text-xs sm:text-sm shadow-md mb-2 text-black truncate max-w-full">
+                          {member.name}
+                        </div>
+
+                        <p
+                          className={`text-xs mb-2 ${textColors[displayRank]} truncate max-w-full`}
+                        >
+                          {member.muid || "No MUID"}
+                        </p>
+
+                        {/* Plain karma display (no highlight) */}
+                        <p className="text-xs sm:text-sm font-semibold text-white">
+                          {member.karma} Karma
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Rest of the leaderboard */}
-        <div className="space-y-4">
-          {leaderboardData
-            .filter((member) => member.rank > 3)
-            .map((member) => (
-              <div
-                key={member.rank}
-                className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 ${getCardBorder(
-                  member.rank
-                )} p-6 transform hover:scale-102`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
-                      {getRankIcon(member.rank)}
+          {/* Rest of the leaderboard */}
+          <div className="space-y-4">
+            {leaderboardData
+              .filter((member) => member.rank > 3)
+              .map((member) => (
+                <div
+                  key={member.rank}
+                  className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 ${getCardBorder(
+                    member.rank
+                  )} p-6 transform hover:scale-102`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex-shrink-0">
+                        {getRankIcon(member.rank)}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-purple-800">
+                          {member.name}
+                        </h3>
+                        <p className="text-purple-600 text-sm">
+                          {member.muid || "No MUID available"}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-purple-800">
-                        {member.name}
-                      </h3>
-                      <p className="text-purple-600 text-sm">
-                        {member.muid || "No MUID available"}
+                    <div className="text-right">
+                      <div className="bg-gradient-to-r from-purple-500 to-purple-700 text-white px-4 py-2 rounded-full shadow-lg">
+                        <span className="font-bold text-lg">
+                          {member.karma}
+                        </span>
+                      </div>
+                      <p className="text-sm text-purple-600 mt-1">
+                        Karma Points
                       </p>
                     </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="bg-gradient-to-r from-purple-500 to-purple-700 text-white px-4 py-2 rounded-full shadow-lg">
-                      <span className="font-bold text-lg">{member.karma}</span>
-                    </div>
-                    <p className="text-sm text-purple-600 mt-1">Karma Points</p>
                   </div>
                 </div>
-              </div>
-            ))}
-        </div>
+              ))}
+          </div>
 
-        {/* No Data Message */}
-        {!loading && !error && leaderboardData.length === 0 && (
-          <div className="text-center py-12">
-            <Target className="w-16 h-16 text-purple-300 mx-auto mb-4" />
-            <p className="text-xl text-purple-600 mb-2">
-              No leaderboard data available
-            </p>
-            <p className="text-purple-500">
-              Check your Airtable configuration and try again.
+          {/* No Data Message */}
+          {!loading && !error && leaderboardData.length === 0 && (
+            <div className="text-center py-12">
+              <Target className="w-16 h-16 text-purple-300 mx-auto mb-4" />
+              <p className="text-xl text-purple-600 mb-2">
+                No leaderboard data available
+              </p>
+              <p className="text-purple-500">
+                Check your Airtable configuration and try again.
+              </p>
+            </div>
+          )}
+
+          {/* Refresh Button */}
+          <div className="text-center mt-8">
+            <button
+              onClick={fetchLeaderboardData}
+              disabled={loading}
+              className="bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white font-bold py-3 px-6 rounded-full transition-colors duration-200 shadow-lg hover:shadow-xl flex items-center justify-center mx-auto"
+            >
+              <RefreshCw
+                className={`w-5 h-5 mr-2 ${loading ? "animate-spin" : ""}`}
+              />
+              {loading ? "Refreshing..." : "Refresh Leaderboard"}
+            </button>
+          </div>
+
+          {/* Footer Note */}
+          <div className="text-center mt-8 text-sm text-purple-600">
+            <p>
+              Leaderboard updates automatically. Keep earning karma points! 🚀
             </p>
           </div>
-        )}
-
-        {/* Refresh Button */}
-        <div className="text-center mt-8">
-          <button
-            onClick={fetchLeaderboardData}
-            disabled={loading}
-            className="bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white font-bold py-3 px-6 rounded-full transition-colors duration-200 shadow-lg hover:shadow-xl flex items-center justify-center mx-auto"
-          >
-            <RefreshCw
-              className={`w-5 h-5 mr-2 ${loading ? "animate-spin" : ""}`}
-            />
-            {loading ? "Refreshing..." : "Refresh Leaderboard"}
-          </button>
-        </div>
-
-        {/* Footer Note */}
-        <div className="text-center mt-8 text-sm text-purple-600">
-          <p>
-            Leaderboard updates automatically. Keep earning karma points! 🚀
-          </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

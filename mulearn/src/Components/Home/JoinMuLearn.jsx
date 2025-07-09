@@ -111,7 +111,7 @@ const JoinMuLearn = () => {
   return (
     <section
       ref={sectionRef}
-      id="join-mulearn-section"
+      id="about-section"
       className={`py-20 bg-gradient-to-b from-white via-lavender-50 to-lavender-100 transition-opacity duration-1000 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
