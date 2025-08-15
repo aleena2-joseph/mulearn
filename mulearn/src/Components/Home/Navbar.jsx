@@ -17,7 +17,6 @@ export default function Navbar({
     } else if (id === "about" && onAboutClick) {
       onAboutClick();
     } else if (id === "leaderboard") {
-      // Try the callback first, then fall back to scroll behavior
       if (onLeaderboardClick) {
         onLeaderboardClick();
       } else {

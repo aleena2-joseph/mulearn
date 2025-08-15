@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, forwardRef } from "react";
 import { FaDiscord } from "react-icons/fa6";
-
+import { useNavigate } from "react-router-dom";
 const Hero = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(true); // Changed to true by default
   const orb1Ref = useRef(null);
   const orb2Ref = useRef(null);
   const orb3Ref = useRef(null);
   const meshRef = useRef(null);
-
+  const Navigate = useNavigate();
   // Combine refs - use the forwarded ref or create internal one
   const sectionRef = ref;
 
@@ -50,7 +50,7 @@ const Hero = forwardRef((props, ref) => {
   };
 
   const handleExploreClick = () => {
-    window.open("https://mulearn.org/", "_blank");
+    Navigate("/events");
   };
 
   return (
