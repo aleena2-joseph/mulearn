@@ -347,8 +347,7 @@ const LearningCircle = () => {
       <div className="bg-gray-50 py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-gray-600 text-sm sm:text-base">
-            © 2025 AJCE Learning Circles. Empowering the next generation of tech
-            innovators.
+            © μlearn AJCE. All rights reserved.
           </p>
         </div>
       </div>
