@@ -7,14 +7,11 @@ const firebaseConfig = {
   projectId: "mulearn-2e7d7",
   storageBucket: "mulearn-2e7d7.firebasestorage.app",
   messagingSenderId: "712474809610",
-  appId: "1:712474809610:web:9f00f01095b630f48556f3",
-  measurementId: "G-XGLJZD6E6H",
+  appId: "1:712474809610:web:58ab239cae3e89db8556f3",
+  measurementId: "G-RPZKXMHVLJ",
 };
 
 const app = initializeApp(firebaseConfig);
-
-// ✅ Firestore instance
 const db = getFirestore(app);
 
-// ✅ Export as a named export
 export { db };

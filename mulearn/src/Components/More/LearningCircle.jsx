@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase"; // Adjust path as needed
 import {
   Users,
   Code,
@@ -9,6 +11,7 @@ import {
   ArrowRight,
   BookOpen,
   Loader,
+  AlertCircle,
 } from "lucide-react";
 
 const LearningCircle = () => {
@@ -49,126 +52,46 @@ const LearningCircle = () => {
     },
   };
 
-  // Firebase configuration function
-  const initializeFirebase = () => {
-    // Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyC28d4SiqZpQd1cRXvmyljM9hEpkjCqOeI",
-      authDomain: "mulearn-2e7d7.firebaseapp.com",
-      projectId: "mulearn-2e7d7",
-      storageBucket: "mulearn-2e7d7.firebasestorage.app",
-      messagingSenderId: "712474809610",
-      appId: "1:712474808456:web:9f00f01095b630f48556f3",
-      measurementId: "G-XGLJZD6E6H",
-    };
-
-    // This function should be called in your actual implementation
-    // with proper Firebase imports
-    console.log("Firebase Config Ready:", firebaseConfig);
-  };
-
-  // Fetch data from Firebase (replace this with actual Firebase call)
+  // Fetch data from Firebase
   useEffect(() => {
     const fetchLearningCircles = async () => {
       try {
         setLoading(true);
+        setError(null);
 
-        // Initialize Firebase
-        initializeFirebase();
+        console.log("Fetching data from Firebase...");
 
-        // In your actual implementation, replace this with:
-        /*
-        import { initializeApp } from "firebase/app";
-        import { getFirestore, collection, getDocs } from "firebase/firestore";
-        
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        
+        // Fetch from Firebase Firestore
         const querySnapshot = await getDocs(collection(db, "learningCircles"));
         const circlesData = [];
+
+        console.log(`Found ${querySnapshot.size} documents`);
+
         querySnapshot.forEach((doc) => {
           const data = doc.data();
-          const design = circleDesigns[data.title] || circleDesigns["No-code/Low-code"];
-          
+          console.log("Document data:", data);
+
+          const design =
+            circleDesigns[data.title] || circleDesigns["No-code/Low-code"];
+
           circlesData.push({
             id: doc.id,
             ...data,
             ...design,
           });
         });
-        */
 
-        // For demonstration, simulating Firebase data structure
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate loading
-
-        const mockFirebaseData = [
-          {
-            id: "doc1",
-            title: "No-code/Low-code",
-            description:
-              "Build powerful applications without traditional coding. Learn tools like Bubble, Webflow, Airtable, and Zapier to create web apps, automate workflows, and bring your ideas to life.",
-            duration: "8 weeks",
-            schedule: "Weekends",
-            features: [
-              "Visual Development",
-              "Automation Tools",
-              "Rapid Prototyping",
-              "Database Management",
-            ],
-          },
-          {
-            id: "doc2",
-            title: "Cyber Security",
-            description:
-              "Learn how to protect systems, networks, and programs from attacks.",
-            duration: "10 weeks",
-            schedule: "Weekends",
-            features: [
-              "Visual Security",
-              "Network Defense",
-              "Ethical Hacking",
-              "Risk Analysis",
-            ],
-          },
-          {
-            id: "doc3",
-            title: "Web Development",
-            description:
-              "Build modern and responsive websites using the latest technologies.",
-            duration: "12 weeks",
-            schedule: "Weekdays",
-            features: ["HTML & CSS", "JavaScript", "Frameworks", "Deployment"],
-          },
-          {
-            id: "doc4",
-            title: "AI & Machine Learning",
-            description:
-              "Understand AI concepts and build ML models for real-world problems.",
-            duration: "14 weeks",
-            schedule: "Weekends",
-            features: [
-              "Neural Networks",
-              "Data Science",
-              "Deep Learning",
-              "Automation",
-            ],
-          },
-        ];
-
-        const circlesData = mockFirebaseData.map((data) => {
-          const design =
-            circleDesigns[data.title] || circleDesigns["No-code/Low-code"];
-          return {
-            ...data,
-            ...design,
-          };
-        });
-
-        setLearningCircles(circlesData);
-        setError(null);
+        if (circlesData.length === 0) {
+          setError(
+            "No learning circles found in the database. Please add some data to Firebase."
+          );
+        } else {
+          setLearningCircles(circlesData);
+          console.log("Successfully loaded learning circles:", circlesData);
+        }
       } catch (err) {
         console.error("Error fetching learning circles:", err);
-        setError("Failed to load learning circles. Please try again later.");
+        setError(`Failed to load learning circles: ${err.message}`);
       } finally {
         setLoading(false);
       }
@@ -182,7 +105,9 @@ const LearningCircle = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <Loader className="w-8 h-8 animate-spin text-indigo-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading learning circles...</p>
+          <p className="text-gray-600">
+            Loading learning circles from Firebase...
+          </p>
         </div>
       </div>
     );
@@ -191,13 +116,48 @@ const LearningCircle = () => {
   if (error) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center p-6">
+        <div className="text-center max-w-md mx-auto p-6">
+          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            Error Loading Data
+          </h2>
           <p className="text-red-600 mb-4">{error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700"
+            className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
           >
             Retry
+          </button>
+          <div className="mt-4 text-sm text-gray-500">
+            <p>Make sure:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1">
+              <li>Firebase is properly configured</li>
+              <li>Firestore security rules allow read access</li>
+              <li>Collection "learningCircles" exists with data</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (learningCircles.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto p-6">
+          <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            No Learning Circles Found
+          </h2>
+          <p className="text-gray-600 mb-4">
+            No learning circles are currently available. Please add some data to
+            your Firebase database.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+          >
+            Refresh
           </button>
         </div>
       </div>
@@ -266,13 +226,13 @@ const LearningCircle = () => {
                   </p>
 
                   {/* Features */}
-                  <div className="mb-6 sm:mb-8">
-                    <h4 className="font-semibold text-gray-900 mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider">
-                      What you'll learn
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-3">
-                      {circle.features &&
-                        circle.features.map((feature, index) => (
+                  {circle.features && circle.features.length > 0 && (
+                    <div className="mb-6 sm:mb-8">
+                      <h4 className="font-semibold text-gray-900 mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider">
+                        What you'll learn
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-3">
+                        {circle.features.map((feature, index) => (
                           <div
                             key={index}
                             className="flex items-center text-xs sm:text-sm text-gray-700"
@@ -283,24 +243,9 @@ const LearningCircle = () => {
                             <span className="font-medium">{feature}</span>
                           </div>
                         ))}
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Duration and Schedule - Mobile optimized */}
-                  {/* <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl space-y-2 sm:space-y-0">
-                    <div className="flex items-center space-x-2">
-                      <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" />
-                      <span className="text-xs sm:text-sm font-medium text-gray-700">
-                        {circle.duration}
-                      </span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" />
-                      <span className="text-xs sm:text-sm font-medium text-gray-700">
-                        {circle.schedule}
-                      </span>
-                    </div>
-                  </div> */}
+                  )}
 
                   {/* Join Button */}
                   <button
