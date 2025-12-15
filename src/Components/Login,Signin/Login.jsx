@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
+//import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowDropleft } from "react-icons/io";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../../firebase"; // Adjust path as needed
+//import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+//import { auth, googleProvider } from "../../firebase"; // Adjust path as needed
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,10 +20,10 @@ export default function Login() {
 
     try {
       // Sign in with email and password
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      //const userCredential = await signInWithEmailAndPassword(auth, email, password);
       
       // Successfully signed in
-      console.log("User logged in:", userCredential.user);
+     // console.log("User logged in:", userCredential.user);
       
       // Navigate to admin panel
       navigate("/admin");
@@ -52,24 +52,24 @@ export default function Login() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    setIsLoading(true);
-    setError("");
+  // const handleGoogleSignIn = async () => {
+  //   setIsLoading(true);
+  //   setError("");
 
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      console.log("Google user logged in:", result.user);
+  //   try {
+  //     const result = await signInWithPopup(auth, googleProvider);
+  //     console.log("Google user logged in:", result.user);
       
-      // Navigate to admin panel
-      navigate("/admin");
+  //     // Navigate to admin panel
+  //     navigate("/admin");
       
-    } catch (error) {
-      console.error("Google sign-in error:", error);
-      setError("Failed to sign in with Google. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  //   } catch (error) {
+  //     console.error("Google sign-in error:", error);
+  //     setError("Failed to sign in with Google. Please try again.");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-50 px-4 py-12">
@@ -215,7 +215,7 @@ export default function Login() {
           </div>
 
           {/* OAuth Buttons */}
-          <div className="grid gap-4">
+          {/* <div className="grid gap-4">
             <button
               type="button"
               onClick={handleGoogleSignIn}
@@ -225,7 +225,7 @@ export default function Login() {
               <FcGoogle className="text-xl" />
               <span>Continue with Google</span>
             </button>
-          </div>
+          </div> */}
         </form>
 
         {/* Sign Up */}
