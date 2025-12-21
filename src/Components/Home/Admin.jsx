@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../firebase';
 import { 
   collection, 
   addDoc, 
@@ -14,6 +17,9 @@ import { db } from '../../firebase';
 import { ChevronDown, Plus, Edit2, Trash2, File, Image, X, Calendar, Clock, Users, Mail, Phone, User, Download, Eye } from 'lucide-react';
 
 const Admin = () => {
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [activeSection, setActiveSection] = useState('');
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,6 +36,22 @@ const Admin = () => {
 
   const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
   const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+
+  // Authentication check
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthenticated(true);
+        setIsCheckingAuth(false);
+      } else {
+        setIsAuthenticated(false);
+        setIsCheckingAuth(false);
+        navigate('/login');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
 
   const fetchEvents = async () => {
     try {
@@ -72,8 +94,10 @@ const Admin = () => {
   };
 
   useEffect(() => {
-    fetchEvents();
-  }, []);
+    if (isAuthenticated) {
+      fetchEvents();
+    }
+  }, [isAuthenticated]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -323,6 +347,23 @@ const Admin = () => {
     a.click();
     window.URL.revokeObjectURL(url);
   };
+
+  // Show loading while checking authentication
+  if (isCheckingAuth) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-slate-600 font-medium">Verifying authentication...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render admin panel if not authenticated
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">

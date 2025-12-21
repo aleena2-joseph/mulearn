@@ -1,9 +1,8 @@
 import { useState } from "react";
-//import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowDropleft } from "react-icons/io";
-//import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-//import { auth, googleProvider } from "../../firebase"; // Adjust path as needed
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase"; // Adjust path as needed
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,10 +19,10 @@ export default function Login() {
 
     try {
       // Sign in with email and password
-      //const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       
       // Successfully signed in
-     // console.log("User logged in:", userCredential.user);
+      console.log("User logged in:", userCredential.user);
       
       // Navigate to admin panel
       navigate("/admin");
@@ -51,25 +50,6 @@ export default function Login() {
       setIsLoading(false);
     }
   };
-
-  // const handleGoogleSignIn = async () => {
-  //   setIsLoading(true);
-  //   setError("");
-
-  //   try {
-  //     const result = await signInWithPopup(auth, googleProvider);
-  //     console.log("Google user logged in:", result.user);
-      
-  //     // Navigate to admin panel
-  //     navigate("/admin");
-      
-  //   } catch (error) {
-  //     console.error("Google sign-in error:", error);
-  //     setError("Failed to sign in with Google. Please try again.");
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-50 px-4 py-12">
@@ -213,19 +193,6 @@ export default function Login() {
             <span className="flex-shrink mx-4 text-gray-400 text-sm">OR</span>
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
-
-          {/* OAuth Buttons */}
-          {/* <div className="grid gap-4">
-            <button
-              type="button"
-              onClick={handleGoogleSignIn}
-              disabled={isLoading}
-              className="flex items-center justify-center gap-2 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <FcGoogle className="text-xl" />
-              <span>Continue with Google</span>
-            </button>
-          </div> */}
         </form>
 
         {/* Sign Up */}
