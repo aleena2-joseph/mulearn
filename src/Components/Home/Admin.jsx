@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { 
   collection, 
@@ -52,6 +52,16 @@ const Admin = () => {
 
     return () => unsubscribe();
   }, [navigate]);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+      alert('Failed to logout. Please try again.');
+    }
+  };
 
   const fetchEvents = async () => {
     try {
@@ -370,14 +380,22 @@ const Admin = () => {
       {/* Header */}
       <div className="bg-white border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-              µ
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                µ
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-slate-800">µLearn Admin Panel</h1>
+                <p className="text-sm text-slate-500">Manage your events and registrations</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-slate-800">µLearn Admin Panel</h1>
-              <p className="text-sm text-slate-500">Manage your events and registrations</p>
-            </div>
+            <button
+              onClick={handleLogout}
+              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium text-sm"
+            >
+              Logout
+            </button>
           </div>
         </div>
       </div>
