@@ -173,7 +173,7 @@ const EventRegistration = () => {
                     onChange={handleChange}
                     required
                     className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-violet-500 focus:outline-none transition-colors"
-                    placeholder="Enter your full name"
+                    
                   />
                 </div>
               </div>
@@ -193,37 +193,47 @@ const EventRegistration = () => {
                     onChange={handleChange}
                     required
                     className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-violet-500 focus:outline-none transition-colors"
-                    placeholder="your.email@example.com"
+                  
                   />
                 </div>
               </div>
+<div>
+  <label
+    htmlFor="phone"
+    className="block text-sm font-semibold text-gray-700 mb-2"
+  >
+    Phone Number <span className="text-red-500">*</span>
+  </label>
 
-              {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Phone Number <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <div className="flex">
-                    <span className="inline-flex items-center px-4 py-3 bg-gray-100 border-2 border-r-0 border-gray-200 rounded-l-xl text-gray-600 font-semibold">
-                      +91
-                    </span>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handlePhoneChange}
-                      required
-                      maxLength="10"
-                      className="w-full pl-4 pr-4 py-3 border-2 border-gray-200 rounded-r-xl focus:border-violet-500 focus:outline-none transition-colors"
-                      placeholder="9876543210"
-                    />
-                  </div>
-                  <p className="text-xs text-gray-500 mt-1">Enter 10-digit mobile number</p>
-                </div>
-              </div>
+  <div className="flex items-center border-2 border-gray-200 rounded-xl focus-within:border-violet-500 transition-colors overflow-hidden">
+    
+    {/* Icon */}
+    <div className="pl-3 pr-2 text-gray-400 flex items-center">
+      <Phone className="h-5 w-5" />
+    </div>
+
+    {/* Country Code */}
+    <span className="px-3 py-3 bg-gray-100 text-gray-600 font-semibold border-r border-gray-200">
+      +91
+    </span>
+
+    {/* Input */}
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      value={formData.phone}
+      onChange={handlePhoneChange}
+      required
+      maxLength="10"
+      className="w-full px-4 py-3 focus:outline-none"
+    />
+  </div>
+
+  <p className="text-xs text-gray-500 mt-1">
+    Enter 10-digit mobile number
+  </p>
+</div>
 
               {/* MUID */}
               <div>
@@ -238,7 +248,7 @@ const EventRegistration = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-violet-500 focus:outline-none transition-colors"
-                  placeholder="Enter your member UID"
+                  
                 />
               </div>
             </div>
@@ -274,12 +284,7 @@ const EventRegistration = () => {
         </div>
 
         {/* Info Box */}
-        <div className="mt-6 bg-violet-50 border border-violet-200 rounded-xl p-4">
-          <p className="text-sm text-violet-800">
-            <span className="font-semibold">Note:</span> Your registration will be confirmed via email. 
-            Please ensure your contact information is accurate.
-          </p>
-        </div>
+      
       </div>
     </div>
   );
