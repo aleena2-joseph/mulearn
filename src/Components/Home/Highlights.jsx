@@ -415,57 +415,62 @@ const Highlights = forwardRef((props, ref) => {
       )}
 
       {/* Custom CSS */}
-      <style jsx>{`
-        .mask-edges {
-          mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 10%,
-            black 90%,
-            transparent
-          );
-        }
+     <style>{`
+  .mask-edges {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
 
-        @keyframes scroll {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(calc(-50% - 8px));
-          }
-        }
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - 8px));
+    }
+  }
 
-        .animate-scroll {
-          animation: scroll 60s linear infinite; /* slower scroll */
-        }
+  .animate-scroll {
+    animation: scroll 60s linear infinite;
+  }
 
-        .pause-animation {
-          animation-play-state: paused;
-        }
+  .pause-animation {
+    animation-play-state: paused;
+  }
 
-        /* Light lavender colors */
-        .from-lavender-100 {
-          --tw-gradient-from: #f3e8ff;
-        }
-        .from-lavender-200 {
-          --tw-gradient-from: #e9d5ff;
-        }
-        .from-lavender-400 {
-          --tw-gradient-from: #c084fc;
-        }
-        .text-lavender-600 {
-          color: #7e22ce;
-        }
-        .text-lavender-800 {
-          color: #581c87;
-        }
-        .shadow-lavender-300\\/40 {
-          box-shadow: 0 10px 15px -3px rgba(216, 180, 254, 0.4);
-        }
-        .border-lavender-200\\/40 {
-          border-color: rgba(233, 213, 255, 0.4);
-        }
-      `}</style>
+  .from-lavender-100 {
+    --tw-gradient-from: #f3e8ff;
+  }
+
+  .from-lavender-200 {
+    --tw-gradient-from: #e9d5ff;
+  }
+
+  .from-lavender-400 {
+    --tw-gradient-from: #c084fc;
+  }
+
+  .text-lavender-600 {
+    color: #7e22ce;
+  }
+
+  .text-lavender-800 {
+    color: #581c87;
+  }
+
+  .shadow-lavender-300\\/40 {
+    box-shadow: 0 10px 15px -3px rgba(216, 180, 254, 0.4);
+  }
+
+  .border-lavender-200\\/40 {
+    border-color: rgba(233, 213, 255, 0.4);
+  }
+`}</style>
     </section>
   );
 });

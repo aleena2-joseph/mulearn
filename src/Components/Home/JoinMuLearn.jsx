@@ -188,46 +188,46 @@ const JoinMuLearn = () => {
       </div>
 
       {/* Custom CSS */}
-      <style jsx>{`
-        .aspect-w-16 {
-          position: relative;
-          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-        }
-        .aspect-h-9 {
-          position: relative;
-        }
-        .aspect-w-16 iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
-        .from-lavender-50 {
-          --tw-gradient-from: #faf5ff;
-        }
-        .to-lavender-100 {
-          --tw-gradient-to: #f3e8ff;
-        }
-        .text-lavender-600 {
-          color: #7e22ce;
-        }
-        .text-lavender-700 {
-          color: #6b21a8;
-        }
-        .text-lavender-800 {
-          color: #581c87;
-        }
-        .text-lavender-900 {
-          color: #4c1d95;
-        }
-        .shadow-lavender-200\\/50 {
-          box-shadow: 0 10px 15px -3px rgba(233, 213, 255, 0.5);
-        }
-        .border-lavender-200\\/50 {
-          border-color: rgba(233, 213, 255, 0.5);
-        }
-      `}</style>
+   <style>{`
+  .aspect-w-16 {
+    position: relative;
+    padding-bottom: 56.25%;
+  }
+  .aspect-h-9 {
+    position: relative;
+  }
+  .aspect-w-16 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .from-lavender-50 {
+    --tw-gradient-from: #faf5ff;
+  }
+  .to-lavender-100 {
+    --tw-gradient-to: #f3e8ff;
+  }
+  .text-lavender-600 {
+    color: #7e22ce;
+  }
+  .text-lavender-700 {
+    color: #6b21a8;
+  }
+  .text-lavender-800 {
+    color: #581c87;
+  }
+  .text-lavender-900 {
+    color: #4c1d95;
+  }
+  .shadow-lavender-200\\/50 {
+    box-shadow: 0 10px 15px -3px rgba(233, 213, 255, 0.5);
+  }
+  .border-lavender-200\\/50 {
+    border-color: rgba(233, 213, 255, 0.5);
+  }
+`}</style>
     </section>
   );
 };
