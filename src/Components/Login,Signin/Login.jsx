@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowDropleft } from "react-icons/io";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -20,7 +21,13 @@ export default function Login() {
   const [resetError, setResetError] = useState("");
   const [resetLoading, setResetLoading] = useState(false);
   const navigate = useNavigate();
+useEffect(() => {
+  const hasAccess = sessionStorage.getItem("adminAccess");
 
+  if (!hasAccess) {
+    navigate("/");
+  }
+}, [navigate]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
