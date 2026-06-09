@@ -92,9 +92,10 @@ const handleGoogleLogin = async () => {
     }
 
   } catch (error) {
-    console.error(error);
-    setError("Google sign-in failed");
-  }
+  console.error("Firebase Error Code:", error.code);
+  console.error("Firebase Error Message:", error.message);
+  setError(error.message);
+}
 };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-50 px-4 py-12">
