@@ -10,7 +10,7 @@ import christopher from "../../assets/christopher.jpg";
 import edwin from "../../assets/edwin.jpg";
 import emil from "../../assets/emil.png";
 import joyel from "../../assets/joyel.jpg";
-import asif from "../../assets/asif.jpg";
+import asif from "../../assets/asif.JPG";
 import kevin from "../../assets/kevin.jpg";
 import amal from "../../assets/amal.jpg";
 import navya from "../../assets/navya.jpg";
