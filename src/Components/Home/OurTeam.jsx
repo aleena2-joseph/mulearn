@@ -1,23 +1,17 @@
 import { useState, useEffect, forwardRef, useRef } from "react";
 import { Users, ChevronLeft, ChevronRight } from "lucide-react";
 import aibal from "../../assets/aibal jose.jpeg";
-import athul from "../../assets/athul.jpeg";
-import athira from "../../assets/athira.jpg";
-import neeva from "../../assets/neeva.jpg";
-import aleena from "../../assets/aleena.png";
-import aibalmani from "../../assets/aibalmani.jpg";
-import alen from "../../assets/alen.png";
-import abin from "../../assets/abin.jpg";
-import geo from "../../assets/geo.png";
-import deric from "../../assets/deric.png";
-import kevin from "../../assets/kevin.jpeg";
-import niyas from "../../assets/niyas.png";
-import sebin from "../../assets/sebin.jpeg";
-import pranav from "../../assets/pranav.png";
-import alfred from "../../assets/alfred.jpeg";
-import bala from "../../assets/bala.png";
-import muzaid from "../../assets/muzaid.png";
-import jibin from "../../assets/jibin.png";
+import agatha from "../../assets/agatha.png";
+import adarshs from "../../assets/adarshs.jpg";
+import athul from "../../assets/athul.jpg";
+import alvina from "../../assets/alvina.jpg";
+import ansif from "../../assets/ansif.jpg";
+import christopher from "../../assets/christopher.jpg";
+import edwin from "../../assets/edwin.jpg";
+import emil from "../../assets/emil.png";
+import joyel from "../../assets/joyel.jpg";
+import asif from "../../assets/asif.jpg";
+import kevin from "../../assets/kevin.jpg";
 import amal from "../../assets/amal.jpg";
 import navya from "../../assets/navya.jpg";
 const OurTeam = forwardRef((props, ref) => {
@@ -109,147 +103,86 @@ const OurTeam = forwardRef((props, ref) => {
     },
   ];
 
-  const teamMembers = [
+   const teamMembers = [
+    {
+      name: "Agatha Anna Skariah",
+      role: "Campus Co-Lead",
+      muid: "agathaannaskariah@mulearn",
+      image: agatha,
+      linkedin: "https://www.linkedin.com/in/agatha-anna-skariah/",
+    },
+    {
+      name: "Joyel Shaji",
+      role: "Product Management IG lead",
+      muid: "joyelshaji@mulearn",
+      image: joyel,
+      linkedin: "https://www.linkedin.com/in/joyelshaji",
+    },
+    {
+      name: "Emil Tom Joseph",
+      role: "Tech Team",
+      muid: "emiltomjoseph@mulearn",
+      image: emil,
+      linkedin: "https://www.linkedin.com/in/emiltomjoseph",
+    },
+    {
+      name: "Christopher Joseph Joby",
+      role: "Tech Team",
+      muid: "christopherjosephjoby@mulearn",
+      image: christopher,
+      linkedin: "https://www.linkedin.com/in/christopherjoby7/",
+    },
+    {
+      name: "Edwin Viju",
+      role: "Marketing Team",
+      muid: "edwinviju-1@mulearn",
+      image: edwin,
+      linkedin: "https://www.linkedin.com/in/edwinviju",
+    },
+    {
+      name: "Asif Hussain",
+      role: "Tech Team",
+      muid: "asifhussain@mulearn",
+      image: asif,
+      linkedin: "https://www.linkedin.com/in/asif-hussain-1b1835380",
+    },
     {
       name: "Athul Mathew",
-      role: "Campus Co-Lead",
+      role: "Marketing Team Lead",
       muid: "athulmathew@mulearn",
       image: athul,
-
-      linkedin: "https://www.linkedin.com/in/athul-mathew-b16202254/",
+      linkedin: "https://www.linkedin.com/in/athul-mathew-b16202254/?lipi=urn%3Ali%3Apage%3Ap_mwlite_my_net",
     },
     {
-      name: "Jibin Jacob",
-      role: "Operation Team Lead",
-      muid: "jibinjacob@mulearn",
-      image: jibin,
-
-      linkedin: "",
-    },
-    {
-      name: "Muzaid Musthafa",
-      role: "Operation Team",
-      muid: "muzaidmusthafa@mulearn",
-      image: muzaid,
-
-      linkedin: "",
-    },
-    {
-      name: "Alen Kuriakose",
-      role: "Operation Team",
-      muid: "alenkuriakose@mulearn",
-      image: alen,
-
-      linkedin: "http://www.linkedin.com/in/alen-kuriakose-69060b260",
-    },
-    {
-      name: "Bala Susan Jacob",
-      role: "Operation Team",
-      muid: "balasusanjacob@mulearn",
-      image: bala,
-
-      linkedin: "",
-    },
-
-    {
-      name: "Abin Thomas",
-      role: "Operation Team",
-      muid: "abinthomas-4@mulearn",
-      image: abin,
-
-      linkedin: "https://www.linkedin.com/in/abin-thomas-b33773265/",
+      name: "ANSIF ANSARY",
+      role: "MARKETING TEAM",
+      muid: "ansifansary@mulearn",
+      image: ansif,
+      linkedin: "https://www.linkedin.com/in/ansifansary",
     },
     {
       name: "Kevin George",
-      role: "Media Team Lead",
+      role: "Tech Team Lead",
       muid: "kevingeorge@mulearn",
       image: kevin,
-
       linkedin: "https://www.linkedin.com/in/kwingeorge",
     },
     {
-      name: "Neeva Sunish Mathew",
-      role: "Media Team",
-      muid: "neevasunishmathew@mulearn",
-      image: neeva,
-
-      linkedin: "https://www.linkedin.com/in/neevasunishmathew",
+      name: "Adarsh S",
+      role: "Media & Design Team Lead",
+      muid: "adarshs-11@mulearn",
+      image: adarshs,
+      linkedin: "https://www.linkedin.com/in/adarsh-s-93a228350?utm_source=share_via&utm_content=profile&utm",
     },
     {
-      name: "Niyas",
-      role: "Media Team",
-      muid: "niyas-2@mulearn",
-      image: niyas,
-
-      linkedin: "",
-    },
-    {
-      name: "Deric Joseph",
-      role: "Media Team",
-      muid: "dericjoseph@mulearn",
-      image: deric,
-
-      linkedin: "https://www.linkedin.com/in/deric-joseph-3a0260279/",
-    },
-    {
-      name: "Pranav Siby",
-      role: "Tech Team Lead",
-      muid: "pranavsiby@mulearn",
-      image: pranav,
-
-      linkedin: "",
-    },
-    {
-      name: "Geo George",
-      role: "Tech Team",
-      muid: "geogeorge-1@mulearn",
-      image: geo,
-
-      linkedin: "https://www.linkedin.com/in/geo-george-883616276/",
-    },
-    {
-      name: "Sebin Saji",
-      role: "Tech Team",
-      muid: "Sebinsaji@mulearn",
-      image: sebin,
-
-      linkedin: "https://linkedin.com/in/vishnuprasad",
-    },
-    {
-      name: "Aibal Jacob Mani",
-      role: "Design Team Lead",
-      muid: "aibaljacobmani@mulearn",
-      image: aibalmani,
-
-      linkedin: "https://www.linkedin.com/in/aibal-jacob-mani-40a623286/",
-    },
-    {
-      name: "Athira Biju",
-      role: "Design Team",
-      muid: "athirabiju@mulearn",
-      image: athira,
-
-      linkedin: "https://www.linkedin.com/in/athira-biju-4a1b21300/",
-    },
-    {
-      name: "Aleena Joseph",
-      role: "Web Lead",
-      muid: "aleenajoseph-4@mulearn",
-      image: aleena,
-
-      linkedin: "https://www.linkedin.com/in/aleena-joseph-1151442b9/",
-    },
-
-    {
-      name: "Alfred P Benjamin",
-      role: "Entrepreneurship Lead",
-      muid: "alfredpbenjamin@mulearn",
-      image: alfred,
-
-      linkedin:
-        "https://www.linkedin.com/in/alfred-p-benjamin-675066246/?originalSubdomain=in",
-    },
+      name: "Alvina Aju",
+      role: "Web Dev IG Lead",
+      muid: "alvinaaju@mulearn",
+      image: alvina,
+      linkedin: "https://www.linkedin.com/in/alvinaajuu",
+    }
   ];
+
 
   // Handle navigation
   const goToNext = () => {
